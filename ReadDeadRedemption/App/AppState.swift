@@ -64,3 +64,9 @@ final class AppPreferences {
     var streakNotifications: Bool = true
     var strictMode: Bool = false
 }
+
+// MARK: - Top-level type aliases for convenience
+
+typealias GoalType = UserPreferences.GoalType
+typealias MotivationStyle = UserPreferences.MotivationStyle
+typealias UnlockDuration = UserPreferences.UnlockDuration

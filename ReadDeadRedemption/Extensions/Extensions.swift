@@ -29,6 +29,7 @@ extension Color {
     
     // MARK: - Theme Colors
     
+    static let accent = Color.accentColor
     static let deepBlue = Color(hex: "1a1a2e")
     static let accentPurple = Color(hex: "6c63ff")
     static let softGreen = Color(hex: "4ecdc4")

@@ -38,12 +38,12 @@ struct SubscriptionView: View {
                     
                     // Features
                     VStack(alignment: .leading, spacing: 16) {
-                        FeatureRow(icon: "infinity", title: "Unlimited Blocked Apps", description: "Block any number of distracting apps")
-                        FeatureRow(icon: "chart.xyaxis.line", title: "Advanced Analytics", description: "Detailed reading insights and trends")
-                        FeatureRow(icon: "timer", title: "Focus Sessions", description: "Pomodoro-style reading timer")
-                        FeatureRow(icon: "widget.small", title: "Home Screen Widget", description: "Track progress at a glance")
-                        FeatureRow(icon: "paintbrush.fill", title: "Custom Themes", description: "Personalize your reading experience")
-                        FeatureRow(icon: "icloud.fill", title: "Cloud Sync", description: "Sync progress across all devices")
+                        ProFeatureRow(icon: "infinity", title: "Unlimited Blocked Apps", description: "Block any number of distracting apps")
+                        ProFeatureRow(icon: "chart.xyaxis.line", title: "Advanced Analytics", description: "Detailed reading insights and trends")
+                        ProFeatureRow(icon: "timer", title: "Focus Sessions", description: "Pomodoro-style reading timer")
+                        ProFeatureRow(icon: "widget.small", title: "Home Screen Widget", description: "Track progress at a glance")
+                        ProFeatureRow(icon: "paintbrush.fill", title: "Custom Themes", description: "Personalize your reading experience")
+                        ProFeatureRow(icon: "icloud.fill", title: "Cloud Sync", description: "Sync progress across all devices")
                     }
                     .padding(20)
                     .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20))
@@ -122,9 +122,9 @@ struct SubscriptionView: View {
     }
 }
 
-// MARK: - Feature Row
+// MARK: - Pro Feature Row
 
-struct FeatureRow: View {
+struct ProFeatureRow: View {
     let icon: String
     let title: String
     let description: String
