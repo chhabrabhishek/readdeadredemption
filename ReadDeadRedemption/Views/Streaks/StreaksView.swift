@@ -168,7 +168,7 @@ struct StreaksView: View {
                     .overlay {
                         if Calendar.current.isDateInToday(date) {
                             Circle()
-                                .stroke(Color.accent, lineWidth: 2)
+                                .stroke(Color.accentColor, lineWidth: 2)
                         }
                     }
             }
@@ -266,7 +266,7 @@ struct AchievementRow: View {
                 .foregroundStyle(achievement.isUnlocked ? .accent : .secondary)
                 .frame(width: 44, height: 44)
                 .background(
-                    (achievement.isUnlocked ? Color.accent : Color.secondary).opacity(0.1),
+                    (achievement.isUnlocked ? Color.accentColor : Color.secondary).opacity(0.1),
                     in: Circle()
                 )
             

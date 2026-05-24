@@ -102,7 +102,7 @@ struct AnalyticsView: View {
                 ForEach(weekData, id: \.day) { data in
                     VStack(spacing: 4) {
                         RoundedRectangle(cornerRadius: 4)
-                            .fill(data.pages > 0 ? Color.accent : Color.accent.opacity(0.15))
+                            .fill(data.pages > 0 ? Color.accentColor : Color.accentColor.opacity(0.15))
                             .frame(height: max(4, CGFloat(data.pages) / CGFloat(max(maxWeekPages, 1)) * 120))
                         
                         Text(data.dayLabel)

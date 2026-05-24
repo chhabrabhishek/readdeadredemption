@@ -1,6 +1,57 @@
 import Foundation
 import SwiftData
 
+// MARK: - Enums (top-level so all files can access them)
+
+enum GoalType: String, Codable, CaseIterable {
+    case pages = "Pages"
+    case minutes = "Minutes"
+}
+
+enum MotivationStyle: String, Codable, CaseIterable {
+    case strict = "Strict"
+    case balanced = "Balanced"
+    case gentle = "Gentle"
+    
+    var description: String {
+        switch self {
+        case .strict: return "No mercy. Apps stay locked until you read."
+        case .balanced: return "Firm but fair. Occasional grace periods."
+        case .gentle: return "Encouraging nudges with flexible goals."
+        }
+    }
+    
+    var icon: String {
+        switch self {
+        case .strict: return "flame.fill"
+        case .balanced: return "scale.3d"
+        case .gentle: return "leaf.fill"
+        }
+    }
+}
+
+enum UnlockDuration: String, Codable, CaseIterable {
+    case twoHours = "2 Hours"
+    case fourHours = "4 Hours"
+    case untilMidnight = "Until Midnight"
+    case allDay = "All Day"
+    
+    var seconds: TimeInterval {
+        switch self {
+        case .twoHours: return 7200
+        case .fourHours: return 14400
+        case .untilMidnight:
+            let calendar = Calendar.current
+            let now = Date()
+            let midnight = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: now)!)
+            return midnight.timeIntervalSince(now)
+        case .allDay: return 86400
+        }
+    }
+}
+
+// MARK: - SwiftData Model
+
 @Model
 final class UserPreferences {
     var id: UUID
@@ -19,56 +70,7 @@ final class UserPreferences {
     var longestStreak: Int
     var totalXP: Int
     var level: Int
-    
-    // Stored as encoded data since FamilyActivitySelection isn't directly persistable
     var selectedAppsData: Data?
-    
-    enum GoalType: String, Codable, CaseIterable {
-        case pages = "Pages"
-        case minutes = "Minutes"
-    }
-    
-    enum MotivationStyle: String, Codable, CaseIterable {
-        case strict = "Strict"
-        case balanced = "Balanced"
-        case gentle = "Gentle"
-        
-        var description: String {
-            switch self {
-            case .strict: return "No mercy. Apps stay locked until you read."
-            case .balanced: return "Firm but fair. Occasional grace periods."
-            case .gentle: return "Encouraging nudges with flexible goals."
-            }
-        }
-        
-        var icon: String {
-            switch self {
-            case .strict: return "flame.fill"
-            case .balanced: return "scale.3d"
-            case .gentle: return "leaf.fill"
-            }
-        }
-    }
-    
-    enum UnlockDuration: String, Codable, CaseIterable {
-        case twoHours = "2 Hours"
-        case fourHours = "4 Hours"
-        case untilMidnight = "Until Midnight"
-        case allDay = "All Day"
-        
-        var seconds: TimeInterval {
-            switch self {
-            case .twoHours: return 7200
-            case .fourHours: return 14400
-            case .untilMidnight:
-                let calendar = Calendar.current
-                let now = Date()
-                let midnight = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: now)!)
-                return midnight.timeIntervalSince(now)
-            case .allDay: return 86400
-            }
-        }
-    }
     
     init() {
         self.id = UUID()

@@ -53,7 +53,7 @@ struct DashboardView: View {
             ZStack {
                 // Background ring
                 Circle()
-                    .stroke(Color.accent.opacity(0.15), lineWidth: 16)
+                    .stroke(Color.accentColor.opacity(0.15), lineWidth: 16)
                     .frame(width: 180, height: 180)
                 
                 // Progress ring
@@ -61,7 +61,7 @@ struct DashboardView: View {
                     .trim(from: 0, to: animateRing ? progressPercentage : 0)
                     .stroke(
                         AngularGradient(
-                            colors: [.accent, .accent.opacity(0.6), .accent],
+                            colors: [Color.accentColor, Color.accentColor.opacity(0.6), Color.accentColor],
                             center: .center
                         ),
                         style: StrokeStyle(lineWidth: 16, lineCap: .round)
@@ -114,7 +114,7 @@ struct DashboardView: View {
                 quickActionButton(
                     icon: "book.fill",
                     title: "Start Reading",
-                    color: .accent
+                    color: .blue
                 )
             }
             

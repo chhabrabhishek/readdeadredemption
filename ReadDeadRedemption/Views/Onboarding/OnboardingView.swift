@@ -4,8 +4,8 @@ struct OnboardingView: View {
     @Environment(AppState.self) private var appState
     @State private var currentPage = 0
     @State private var dailyGoal = 20
-    @State private var goalType: UserPreferences.GoalType = .pages
-    @State private var motivationStyle: UserPreferences.MotivationStyle = .balanced
+    @State private var goalType: GoalType = .pages
+    @State private var motivationStyle: MotivationStyle = .balanced
     
     private let totalPages = 5
     
@@ -161,7 +161,7 @@ private struct WelcomePage: View {
 
 private struct GoalSetupPage: View {
     @Binding var dailyGoal: Int
-    @Binding var goalType: UserPreferences.GoalType
+    @Binding var goalType: GoalType
     
     var body: some View {
         VStack(spacing: 32) {
@@ -179,7 +179,7 @@ private struct GoalSetupPage: View {
             
             // Goal type picker
             HStack(spacing: 12) {
-                ForEach(UserPreferences.GoalType.allCases, id: \.self) { type in
+                ForEach(GoalType.allCases, id: \.self) { type in
                     Button {
                         withAnimation { goalType = type }
                     } label: {
@@ -244,7 +244,7 @@ private struct GoalSetupPage: View {
 // MARK: - Motivation Style Page
 
 private struct MotivationPage: View {
-    @Binding var style: UserPreferences.MotivationStyle
+    @Binding var style: MotivationStyle
     
     var body: some View {
         VStack(spacing: 32) {
@@ -261,7 +261,7 @@ private struct MotivationPage: View {
             }
             
             VStack(spacing: 16) {
-                ForEach(UserPreferences.MotivationStyle.allCases, id: \.self) { option in
+                ForEach(MotivationStyle.allCases, id: \.self) { option in
                     Button {
                         withAnimation(.spring(response: 0.3)) {
                             style = option

@@ -9,7 +9,7 @@ struct AppSelectionView: View {
                 VStack(spacing: 8) {
                     Image(systemName: "apps.iphone")
                         .font(.system(size: 48))
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(Color.accentColor)
                     
                     Text("App Blocking")
                         .font(.title2.weight(.bold))
@@ -35,7 +35,7 @@ struct AppSelectionView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
-                        .background(.accent, in: RoundedRectangle(cornerRadius: 14))
+                        .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 14))
                 }
                 
                 Spacer()
