@@ -40,6 +40,6 @@ struct MainTabView: View {
                 SettingsView()
             }
         }
-        .tint(.accent)
+        .tint(Color.accentColor)
     }
 }
