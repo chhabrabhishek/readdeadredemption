@@ -66,14 +66,14 @@ final class BackgroundTaskManager {
             task.setTaskCompleted(success: false)
         }
         
-        let defaults = UserDefaults(suiteName: "group.com.yourcompany.readdeadredemption")
+        let defaults = UserDefaults.standard
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let todayKey = formatter.string(from: Date())
         
         // Reset daily progress
-        defaults?.set(0, forKey: "todayProgress_\(todayKey)")
-        defaults?.set(false, forKey: "isUnlocked")
+        defaults.set(0, forKey: "todayProgress_\(todayKey)")
+        defaults.set(false, forKey: "isUnlocked")
         
         // App blocking disabled (requires paid account)
         
@@ -88,8 +88,8 @@ final class BackgroundTaskManager {
             task.setTaskCompleted(success: false)
         }
         
-        let defaults = UserDefaults(suiteName: "group.com.yourcompany.readdeadredemption")
-        let isUnlocked = defaults?.bool(forKey: "isUnlocked") ?? false
+        let defaults = UserDefaults.standard
+        let isUnlocked = defaults.bool(forKey: "isUnlocked") ?? false
         
         // If it's late in the day and user hasn't read, send reminder
         let hour = Calendar.current.component(.hour, from: Date())

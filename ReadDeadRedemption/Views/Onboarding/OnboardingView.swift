@@ -105,10 +105,10 @@ struct OnboardingView: View {
     }
     
     private func completeOnboarding() {
-        let defaults = UserDefaults(suiteName: "group.com.yourcompany.readdeadredemption")
-        defaults?.set(dailyGoal, forKey: "dailyGoal")
-        defaults?.set(goalType.rawValue, forKey: "goalType")
-        defaults?.set(motivationStyle.rawValue, forKey: "motivationStyle")
+        let defaults = UserDefaults.standard
+        defaults.set(dailyGoal, forKey: "dailyGoal")
+        defaults.set(goalType.rawValue, forKey: "goalType")
+        defaults.set(motivationStyle.rawValue, forKey: "motivationStyle")
         
         appState.dailyGoal = dailyGoal
         appState.completeOnboarding()

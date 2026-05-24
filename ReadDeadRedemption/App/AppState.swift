@@ -11,7 +11,7 @@ final class AppState {
     
     let storeKitManager = StoreKitManager.shared
     var preferences = AppPreferences()
-    private let defaults = UserDefaults(suiteName: "group.com.yourcompany.readdeadredemption")
+    private let defaults = UserDefaults.standard
     
     enum AppTab: Int, CaseIterable {
         case dashboard
@@ -21,9 +21,9 @@ final class AppState {
     }
     
     func initialize() async {
-        isOnboardingComplete = defaults?.bool(forKey: "onboardingComplete") ?? false
-        dailyGoal = defaults?.integer(forKey: "dailyGoal") ?? 20
-        dailyProgress = defaults?.integer(forKey: "todayProgress_\(todayKey)") ?? 0
+        isOnboardingComplete = defaults.bool(forKey: "onboardingComplete") ?? false
+        dailyGoal = defaults.integer(forKey: "dailyGoal") ?? 20
+        dailyProgress = defaults.integer(forKey: "todayProgress_\(todayKey)") ?? 0
         
         if dailyGoal == 0 { dailyGoal = 20 }
         updateUnlockState()
@@ -31,18 +31,18 @@ final class AppState {
     
     func completeOnboarding() {
         isOnboardingComplete = true
-        defaults?.set(true, forKey: "onboardingComplete")
+        defaults.set(true, forKey: "onboardingComplete")
     }
     
     func recordPagesRead(_ pages: Int) {
         dailyProgress += pages
-        defaults?.set(dailyProgress, forKey: "todayProgress_\(todayKey)")
+        defaults.set(dailyProgress, forKey: "todayProgress_\(todayKey)")
         updateUnlockState()
     }
     
     func updateUnlockState() {
         isUnlocked = dailyProgress >= dailyGoal
-        defaults?.set(isUnlocked, forKey: "isUnlocked")
+        defaults.set(isUnlocked, forKey: "isUnlocked")
     }
     
     private var todayKey: String {

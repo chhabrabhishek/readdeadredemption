@@ -15,8 +15,7 @@ struct ReadDeadRedemptionApp: App {
         ])
         let modelConfiguration = ModelConfiguration(
             schema: schema,
-            isStoredInMemoryOnly: false,
-            groupContainer: .identifier("group.com.yourcompany.readdeadredemption")
+            isStoredInMemoryOnly: false
         )
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
