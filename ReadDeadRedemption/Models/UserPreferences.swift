@@ -1,6 +1,5 @@
 import Foundation
 import SwiftData
-import FamilyControls
 
 @Model
 final class UserPreferences {

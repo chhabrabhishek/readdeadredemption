@@ -1,10 +1,8 @@
 import SwiftUI
-import FamilyControls
 
 struct SettingsView: View {
     @Environment(AppState.self) private var appState
     @State private var showSubscription = false
-    @State private var showAppPicker = false
     @State private var showResetAlert = false
     
     var body: some View {
@@ -38,33 +36,11 @@ struct SettingsView: View {
                     }
                 }
                 
-                // App Blocking
+                // App Blocking (requires paid Apple Developer account)
                 Section("App Blocking") {
-                    Button {
-                        showAppPicker = true
-                    } label: {
-                        Label("Select Blocked Apps", systemImage: "lock.app.dashed")
-                    }
-                    
-                    Picker("Unlock Duration", selection: Binding(
-                        get: { appState.preferences.unlockDuration },
-                        set: { appState.preferences.unlockDuration = $0 }
-                    )) {
-                        ForEach(UnlockDuration.allCases, id: \.self) { duration in
-                            Text(duration.rawValue).tag(duration)
-                        }
-                    }
-                    
-                    Toggle("Strict Mode", isOn: Binding(
-                        get: { appState.preferences.strictMode },
-                        set: { appState.preferences.strictMode = $0 }
-                    ))
-                    
-                    if appState.preferences.strictMode {
-                        Text("Once enabled, apps stay blocked until the full goal is met. No partial unlocks.")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
+                    Text("Screen Time app blocking requires a paid Apple Developer account ($99/year).")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
                 
                 // Notifications
@@ -142,7 +118,6 @@ struct SettingsView: View {
             .sheet(isPresented: $showSubscription) {
                 SubscriptionView()
             }
-            .familyActivityPicker(isPresented: $showAppPicker, selection: $appState.screenTimeManager.activitySelection)
             .alert("Reset Progress", isPresented: $showResetAlert) {
                 Button("Cancel", role: .cancel) {}
                 Button("Reset", role: .destructive) {

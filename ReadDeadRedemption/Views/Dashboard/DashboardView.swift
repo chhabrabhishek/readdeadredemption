@@ -8,8 +8,6 @@ struct DashboardView: View {
     @State private var showAppSelection = false
     @State private var animateRing = false
     
-    private let screenTimeManager = ScreenTimeManager.shared
-    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -160,10 +158,10 @@ struct DashboardView: View {
             )
             
             StatCard(
-                title: "Blocked",
-                value: "\(screenTimeManager.blockedAppsCount)",
-                icon: "lock.fill",
-                color: .red
+                title: "Status",
+                value: appState.isUnlocked ? "Free" : "Locked",
+                icon: appState.isUnlocked ? "lock.open.fill" : "lock.fill",
+                color: appState.isUnlocked ? .green : .red
             )
             
             StatCard(

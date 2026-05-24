@@ -9,8 +9,8 @@ final class AppState {
     var dailyGoal: Int = 20
     var isUnlocked: Bool = false
     
-    // Screen Time is disabled — requires paid Apple Developer account
-    // private let screenTimeManager = ScreenTimeManager.shared
+    let storeKitManager = StoreKitManager.shared
+    var preferences = AppPreferences()
     private let defaults = UserDefaults(suiteName: "group.com.yourcompany.readdeadredemption")
     
     enum AppTab: Int, CaseIterable {
@@ -26,17 +26,7 @@ final class AppState {
         dailyProgress = defaults?.integer(forKey: "todayProgress_\(todayKey)") ?? 0
         
         if dailyGoal == 0 { dailyGoal = 20 }
-        
-        // Skip Screen Time authorization on free account
-        // await checkAuthorization()
         updateUnlockState()
-    }
-    
-    func checkAuthorization() async {
-        // Requires paid Apple Developer account for Family Controls
-        // let center = AuthorizationCenter.shared
-        // try await center.requestAuthorization(for: .individual)
-        isAuthorized = false
     }
     
     func completeOnboarding() {
@@ -60,4 +50,17 @@ final class AppState {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: Date())
     }
+}
+
+// MARK: - App Preferences (in-memory, synced to UserDefaults)
+
+@Observable
+final class AppPreferences {
+    var dailyPageGoal: Int = 20
+    var goalType: GoalType = .pages
+    var motivationStyle: MotivationStyle = .balanced
+    var unlockDuration: UnlockDuration = .untilMidnight
+    var notificationsEnabled: Bool = true
+    var streakNotifications: Bool = true
+    var strictMode: Bool = false
 }

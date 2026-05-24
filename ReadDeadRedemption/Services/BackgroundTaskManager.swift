@@ -75,10 +75,7 @@ final class BackgroundTaskManager {
         defaults?.set(0, forKey: "todayProgress_\(todayKey)")
         defaults?.set(false, forKey: "isUnlocked")
         
-        // Re-lock apps
-        Task {
-            await ScreenTimeManager.shared.lockApps()
-        }
+        // App blocking disabled (requires paid account)
         
         task.setTaskCompleted(success: true)
         
