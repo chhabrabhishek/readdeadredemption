@@ -168,7 +168,7 @@ struct StreaksView: View {
                     .overlay {
                         if Calendar.current.isDateInToday(date) {
                             Circle()
-                                .stroke(Color.accentColor, lineWidth: 2)
+                                .stroke(Color.blue, lineWidth: 2)
                         }
                     }
             }
@@ -263,10 +263,10 @@ struct AchievementRow: View {
         HStack(spacing: 12) {
             Image(systemName: achievement.iconName)
                 .font(.title2)
-                .foregroundStyle(achievement.isUnlocked ? .accent : .secondary)
+                .foregroundStyle(achievement.isUnlocked ? .blue : .secondary)
                 .frame(width: 44, height: 44)
                 .background(
-                    (achievement.isUnlocked ? Color.accentColor : Color.secondary).opacity(0.1),
+                    (achievement.isUnlocked ? Color.blue : Color.secondary).opacity(0.1),
                     in: Circle()
                 )
             
@@ -279,7 +279,7 @@ struct AchievementRow: View {
                 
                 if !achievement.isUnlocked {
                     ProgressView(value: achievement.progress)
-                        .tint(.accent)
+                        .tint(.blue)
                 }
             }
             

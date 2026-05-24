@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 import PDFKit
 import UniformTypeIdentifiers
 
@@ -68,7 +69,7 @@ struct ReadingSessionView: View {
             
             Image(systemName: "doc.text.fill")
                 .font(.system(size: 64))
-                .foregroundStyle(.accent.opacity(0.6))
+                .foregroundStyle(.blue.opacity(0.6))
             
             VStack(spacing: 8) {
                 Text("Start Reading")
@@ -93,7 +94,7 @@ struct ReadingSessionView: View {
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(.accent, in: RoundedRectangle(cornerRadius: 14))
+                    .background(.blue, in: RoundedRectangle(cornerRadius: 14))
                 }
                 
                 // Quick read option with sample
@@ -105,10 +106,10 @@ struct ReadingSessionView: View {
                         Text("Quick Read (Sample Text)")
                     }
                     .font(.body.weight(.medium))
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(.blue)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(.accent.opacity(0.1), in: RoundedRectangle(cornerRadius: 14))
+                    .background(.blue.opacity(0.1), in: RoundedRectangle(cornerRadius: 14))
                 }
             }
             .padding(.horizontal, 24)
@@ -230,11 +231,11 @@ struct CircularProgressView: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(Color.accentColor.opacity(0.2), lineWidth: lineWidth)
+                .stroke(Color.blue.opacity(0.2), lineWidth: lineWidth)
             
             Circle()
                 .trim(from: 0, to: min(progress, 1.0))
-                .stroke(Color.accentColor, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                .stroke(Color.blue, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                 .rotationEffect(.degrees(-90))
         }
         .frame(width: size, height: size)
@@ -291,7 +292,7 @@ struct SessionCompleteView: View {
                 VStack(spacing: 4) {
                     Text("+\(result.pagesRead * 5)")
                         .font(.title.weight(.bold))
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(.blue)
                     Text("XP")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -310,7 +311,7 @@ struct SessionCompleteView: View {
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(.accent, in: RoundedRectangle(cornerRadius: 14))
+                    .background(.blue, in: RoundedRectangle(cornerRadius: 14))
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 32)

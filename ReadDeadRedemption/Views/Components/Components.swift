@@ -71,7 +71,7 @@ struct ReadingProgressBar: View {
     let progress: Double
     var height: CGFloat = 8
     var backgroundColor: Color = .secondary.opacity(0.2)
-    var foregroundColor: Color = .accentColor
+    var foregroundColor: Color = .blue
     
     var body: some View {
         GeometryReader { geometry in

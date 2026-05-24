@@ -53,7 +53,7 @@ struct DashboardView: View {
             ZStack {
                 // Background ring
                 Circle()
-                    .stroke(Color.accentColor.opacity(0.15), lineWidth: 16)
+                    .stroke(Color.blue.opacity(0.15), lineWidth: 16)
                     .frame(width: 180, height: 180)
                 
                 // Progress ring
@@ -61,7 +61,7 @@ struct DashboardView: View {
                     .trim(from: 0, to: animateRing ? progressPercentage : 0)
                     .stroke(
                         AngularGradient(
-                            colors: [Color.accentColor, Color.accentColor.opacity(0.6), Color.accentColor],
+                            colors: [Color.blue, Color.blue.opacity(0.6), Color.blue],
                             center: .center
                         ),
                         style: StrokeStyle(lineWidth: 16, lineCap: .round)
