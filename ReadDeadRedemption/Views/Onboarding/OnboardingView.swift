@@ -387,11 +387,9 @@ private struct PermissionPage: View {
             
             if !permissionGranted {
                 Button {
-                    Task {
-                        await appState.checkAuthorization()
-                        withAnimation {
-                            permissionGranted = appState.isAuthorized
-                        }
+                    // Screen Time authorization disabled on free account
+                    withAnimation {
+                        permissionGranted = true
                     }
                 } label: {
                     HStack {
