@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 
 struct SubscriptionView: View {
     @Environment(\.dismiss) private var dismiss
@@ -110,12 +111,14 @@ struct SubscriptionView: View {
         Task {
             let productID: String
             switch selectedPlan {
-            case .monthly: productID = "com.yourcompany.readdeadredemption.monthly"
-            case .yearly: productID = "com.yourcompany.readdeadredemption.yearly"
-            case .lifetime: productID = "com.yourcompany.readdeadredemption.lifetime"
+            case .monthly: productID = "com.readdeadredemption.pro.monthly"
+            case .yearly: productID = "com.readdeadredemption.pro.yearly"
+            case .lifetime: productID = "com.readdeadredemption.pro.lifetime"
             }
             
-            await appState.storeKitManager.purchase(productID: productID)
+            if let product = appState.storeKitManager.products.first(where: { $0.id == productID }) {
+                _ = try? await appState.storeKitManager.purchase(product)
+            }
             isPurchasing = false
             dismiss()
         }

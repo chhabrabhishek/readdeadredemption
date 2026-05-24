@@ -162,7 +162,7 @@ struct ReadingSessionView: View {
     // MARK: - Actions
     
     private func startSession(with url: URL) {
-        let pageCount = tracker.getPageCount(for: url) ?? 0
+        _ = tracker.getPageCount(for: url) ?? 0
         tracker.startSession(
             materialTitle: url.lastPathComponent,
             materialID: nil,
