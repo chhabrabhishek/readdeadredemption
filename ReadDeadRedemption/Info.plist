@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>processing</string>
+        <string>fetch</string>
+    </array>
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+        <string>com.yourcompany.readdeadredemption.dailyreset</string>
+        <string>com.yourcompany.readdeadredemption.streakcheck</string>
+    </array>
+    <key>NSFamilyControlsUsageDescription</key>
+    <string>ReadDeadRedemption needs access to Screen Time to block selected apps until you complete your daily reading goal.</string>
+    <key>CFBundleDisplayName</key>
+    <string>ReadDeadRedemption</string>
+    <key>CFBundleName</key>
+    <string>ReadDeadRedemption</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>UILaunchStoryboardName</key>
+    <string></string>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
+</dict>
+</plist>
